@@ -1,11 +1,11 @@
 
 groups:
-  agent_group: [control]
+  agent_group: [testa]
     
 agents:
-  sample_agent:
+  testagent:
     group: agent_group
-    path: /proj/montage/magi-modules/sampleagent/ 
+    path: /Users/hussain/projects/github/magi-modules/agent101/ 
     execargs: {}
 
 streamstarts: [ charStream ]
@@ -14,7 +14,7 @@ eventstreams:
 
   charStream:         
       - type: event
-        agent: sample_agent
+        agent: testagent
         method: testChar
         trigger: charDone
         args:
@@ -26,19 +26,19 @@ eventstreams:
 
   intStream:
       - type: event
-        agent: sample_agent
+        agent: testagent 
         method: testInt
         trigger: intDone
         args:
           a: 50
-          b: 25
+          b: 55
 
       - type: trigger
-        triggers: [ {event: intDone, retVal: 75, target: 'voidStream'} ]
+        triggers: [ {event: intDone, retVal: 105, target: 'voidStream'} ]
 
   voidStream:
       - type: event
-        agent: sample_agent
+        agent: testagent
         method: testVoid
         trigger: voidDone
         args: {}

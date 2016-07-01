@@ -14,9 +14,9 @@ from magi.util.processAgent import initializeProcessAgent
 
 log = logging.getLogger(__name__)
 
-class RunShell(DispatchAgent):
+class Agent101(DispatchAgent):
     """
-            Runs the specified script in a shell 
+            Illustrates how methds can be developed for agents in MAGI 
 	"""
     def __init__(self):
         DispatchAgent.__init__(self)
@@ -26,7 +26,7 @@ class RunShell(DispatchAgent):
         functionName = self.testChar.__name__
         helpers.entrylog(log, functionName, locals(), logging.INFO)
         log.info("a: %s" %(a))
-        log.info("b: %s" %(a))
+        log.info("b: %s" %(b))
         result = a + b
         log.info("result: %s" %(result))
         helpers.exitlog(log, functionName, result, logging.INFO)
@@ -37,7 +37,7 @@ class RunShell(DispatchAgent):
         functionName = self.testInt.__name__
         helpers.entrylog(log, functionName, locals(), logging.INFO)
         log.info("a: %d" %(a))
-        log.info("b: %d" %(a))
+        log.info("b: %d" %(b))
         result = a + b
         log.info("result: %d" %(result))
         helpers.exitlog(log, functionName, result, logging.INFO)
@@ -52,12 +52,12 @@ class RunShell(DispatchAgent):
         helpers.exitlog(log, functionName, None, logging.INFO)
     
 def getAgent(**kwargs):
-    agent = RunShell()
+    agent = Agent101()
     agent.setConfiguration(None, **kwargs)
     return agent
 
 if __name__ == "__main__":
-    agent = RunShell()
+    agent = Agent101()
     kwargs = initializeProcessAgent(agent, sys.argv)
     agent.setConfiguration(None, **kwargs)
     agent.run()
