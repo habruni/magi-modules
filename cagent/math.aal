@@ -5,7 +5,7 @@ groups:
 agents:
   c_agent:
     group: agent_group
-    path: /proj/montage/magi-modules/cagent/ 
+    path: /users/habruni/magi-modules/cagent 
     execargs: { loglevel: debug }
 
 streamstarts: [ integerAddStream ]
@@ -34,5 +34,28 @@ eventstreams:
           b: 25
 
       - type: trigger
-        triggers: [ {event: subDone, retVal: 25, target: 'exit'} ]
+        triggers: [ {event: subDone, retVal: 25, target: 'integerMultiplyStream'} ]
+  
+  integerMultiplyStream:
+      - type: event
+        agent: c_agent
+        method: multiplyInteger
+        trigger: multDone
+        args:
+          a: 25
+          b: 50
+          
+      - type: trigger
+        triggers: [ {event: multDone, retVal: 1250, target: 'integerDivideStream'} ]
 
+  integerDivideStream:
+      - type: event
+        agent: c_agent
+        method: divideInteger
+        trigger: divDone
+        args:
+          a: 50
+          b: 25
+
+      - type: trigger
+        triggers: [ {event: divDone, retVal: 2, target: 'exit'} ]
