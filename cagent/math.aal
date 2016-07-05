@@ -44,7 +44,7 @@ eventstreams:
         args:
           a: 25
           b: 50
-          
+
       - type: trigger
         triggers: [ {event: multDone, retVal: 1250, target: 'integerDivideStream'} ]
 
