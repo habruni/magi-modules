@@ -117,7 +117,7 @@ int main(int argc, char **argv) {
 	registerFunction("addInteger", "int*", &addInteger, 2, "int", "int");
 	registerFunction("subtractInteger", "int*", &subtractInteger, 2, "int", "int");
         registerFunction("multiplyInteger", "int*", &multiplyInteger, 2, "int", "int");
-        registerFunction("divideInteger", "int*", &divideInteger, 2, "int", "int"):
+        registerFunction("divideInteger", "int*", &divideInteger, 2, "int", "int");
 	//list = ArgParser(argc, argv);
 	agentStart(argc, argv);
 	log_debug(logger, "Going out of the main\n");
